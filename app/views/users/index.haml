@@ -1,0 +1,9 @@
+%table.list
+  %tr
+    %td Name
+    %td Email
+  -@data.each do |item|
+    %tr
+      %td=item.name
+      %td=item.email
+    

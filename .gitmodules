@@ -1,0 +1,6 @@
+[submodule "vendor/plugins/restful_authentication"]
+	path = vendor/plugins/restful_authentication
+	url = git://github.com/technoweenie/restful-authentication.git
+[submodule "vendor/plugins/restful_acl"]
+	path = vendor/plugins/restful_acl
+	url = git://github.com/mdarby/restful_acl.git

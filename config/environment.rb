@@ -16,9 +16,12 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "haml"
+  config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+  config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source =>  "http://gems.github.com"
+  config.gem "mocha"
+  config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
   # Only load the plugins named here, in the order given (default is alphabetical).

@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/restful_acl"]
 	path = vendor/plugins/restful_acl
 	url = git://github.com/mdarby/restful_acl.git
+[submodule "vendor/plugins/paperclip"]
+	path = vendor/plugins/paperclip
+	url = git://github.com/thoughtbot/paperclip.git

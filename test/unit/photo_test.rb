@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PhotoTest < ActiveSupport::TestCase
-  def test_should_be_valid
-    assert Photo.new.valid?
-  end
+  should_have_attached_file :photo
+  should_validate_attachment_presence :photo
 end

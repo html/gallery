@@ -1,54 +1,68 @@
 require 'test_helper'
 
 class PhotosControllerTest < ActionController::TestCase
-  def test_index
-    get :index
-    assert_template 'index'
+  context "index action" do
+    should "render index template" do
+      get :index
+      assert_template 'index'
+    end
   end
   
-  def test_show
-    get :show, :id => Photo.first
-    assert_template 'show'
+  context "show action" do
+    should "render show template" do
+      get :show, :id => Photo.first
+      assert_template 'show'
+    end
   end
   
-  def test_new
-    get :new
-    assert_template 'new'
+  context "new action" do
+    should "render new template" do
+      get :new
+      assert_template 'new'
+    end
   end
   
-  def test_create_invalid
-    Photo.any_instance.stubs(:valid?).returns(false)
-    post :create
-    assert_template 'new'
+  context "create action" do
+    should "render new template when model is invalid" do
+      Photo.any_instance.stubs(:valid?).returns(false)
+      post :create
+      assert_template 'new'
+    end
+    
+    should "redirect when model is valid" do
+      Photo.any_instance.stubs(:valid?).returns(true)
+      post :create
+      assert_redirected_to photo_url(assigns(:photo))
+    end
   end
   
-  def test_create_valid
-    Photo.any_instance.stubs(:valid?).returns(true)
-    post :create
-    assert_redirected_to photo_url(assigns(:photo))
+  context "edit action" do
+    should "render edit template" do
+      get :edit, :id => Photo.first
+      assert_template 'edit'
+    end
   end
   
-  def test_edit
-    get :edit, :id => Photo.first
-    assert_template 'edit'
+  context "update action" do
+    should "render edit template when model is invalid" do
+      Photo.any_instance.stubs(:valid?).returns(false)
+      put :update, :id => Photo.first
+      assert_template 'edit'
+    end
+  
+    should "redirect when model is valid" do
+      Photo.any_instance.stubs(:valid?).returns(true)
+      put :update, :id => Photo.first
+      assert_redirected_to photo_url(assigns(:photo))
+    end
   end
   
-  def test_update_invalid
-    Photo.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Photo.first
-    assert_template 'edit'
-  end
-  
-  def test_update_valid
-    Photo.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Photo.first
-    assert_redirected_to photo_url(assigns(:photo))
-  end
-  
-  def test_destroy
-    photo = Photo.first
-    delete :destroy, :id => photo
-    assert_redirected_to photos_url
-    assert !Photo.exists?(photo.id)
+  context "destroy action" do
+    should "destroy model and redirect to index action" do
+      photo = Photo.first
+      delete :destroy, :id => photo
+      assert_redirected_to photos_url
+      assert !Photo.exists?(photo.id)
+    end
   end
 end

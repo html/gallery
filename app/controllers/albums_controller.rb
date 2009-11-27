@@ -1,6 +1,16 @@
 class AlbumsController < ApplicationController
+  @@parent_key = :category_id
+  @@parent_model = Category
+  @@model = Album
+  before_filter :require_parent_item, :only => [:new, :create]
+  #before_filter :optional_require_parent_item, :only => :index
+
   def index
-    @albums = Album.all
+    if params[:category_id]
+      @albums = parent_item.albums
+    else
+      @albums = Album.all
+    end
   end
   
   def show
@@ -13,6 +23,7 @@ class AlbumsController < ApplicationController
   
   def create
     @album = Album.new(params[:album])
+    @album.category_id = parent_item.to_param
     if @album.save
       flash[:notice] = "Successfully created album."
       redirect_to @album

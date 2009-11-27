@@ -3,7 +3,18 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'mocha'
 require 'shoulda'
-#require 'factory_girl'
+require 'factory_girl'
+
+[:category, :album].each do |n|
+  Factory.define n do |f|
+    f.title 'Test title'
+  end
+end
+
+Factory.define :photo do |f|
+  f.title 'Test title'
+  f.photo { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
+end
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method

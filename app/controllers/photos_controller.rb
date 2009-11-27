@@ -1,6 +1,15 @@
 class PhotosController < ApplicationController
+  @@parent_model = Album
+  @@parent_key = :album_id
+  @@model = Photo
+  before_filter :require_parent_item, :only => [:new, :create]
+
   def index
-    @photos = Photo.all
+    if params[:album_id]
+      @photos = parent_item.photos
+    else
+      @photos = Photo.all
+    end
   end
   
   def show
@@ -13,6 +22,7 @@ class PhotosController < ApplicationController
   
   def create
     @photo = Photo.new(params[:photo])
+    @photo.album_id = parent_item.to_param
     if @photo.save
       flash[:notice] = "Successfully created photo."
       redirect_to @photo

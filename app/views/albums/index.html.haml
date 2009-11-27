@@ -8,6 +8,9 @@
       %td= h album.title
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
+      %td= link_to 'New photo', new_album_photo_path(album)
+      %td= link_to 'All photos', album_photos_path(album)
       %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Album", new_album_path
+- if @parent_item
+  %p= link_to "New Album", new_category_album_path(@parent_item)

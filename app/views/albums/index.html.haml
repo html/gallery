@@ -9,7 +9,7 @@
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'New photo', new_album_photo_path(album)
-      %td= link_to 'All photos', album_photos_path(album)
+      %td= link_to_item_with_count 'All photos', album_photos_path(album), album.photos.size
       %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
 
 - if @parent_item

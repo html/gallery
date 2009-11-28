@@ -5,15 +5,24 @@ require 'mocha'
 require 'shoulda'
 require 'factory_girl'
 
-[:category, :album].each do |n|
-  Factory.define n do |f|
-    f.title 'Test title'
-  end
+
+Factory.define :category do |f|
+  f.title 'Test title'
 end
+
+parent_category = Factory(:category)
+
+Factory.define :album do |f|
+  f.title 'Test title'
+  f.category_id parent_category.to_param
+end
+
+parent_album = Factory(:album)
 
 Factory.define :photo do |f|
   f.title 'Test title'
   f.photo { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
+  f.album_id parent_album.to_param
 end
 
 class ActiveSupport::TestCase
@@ -49,4 +58,19 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def child_and_parent_fixtures(parent_model, child_model, key)
+    parent = Factory(parent_model)
+    [Factory(child_model, key => parent), parent]
+  end
+
+  def check_links_work_correctly
+    assert_select 'a' do |links|
+      links.each do |link|
+        debugger
+        get link[0].attributes["href"]
+        assert_response :success
+        link
+      end
+    end
+  end
 end

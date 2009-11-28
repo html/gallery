@@ -14,7 +14,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  protected 
+
   def catch_exceptions
+    #yield and return
     begin
       yield
     rescue => exception
@@ -31,9 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_parent_item
-    unless parent_item
-      raise ActiveRecord::RecordNotFound
-    end
+    not_found_unless parent_item
   end
 
   def optional_require_parent_item
@@ -42,7 +43,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def not_found
+    raise ActiveRecord::RecordNotFound
+  end
+
+  def not_found_unless(condition)
+    unless condition
+      not_found
+    end
+  end
+
   class << self
+    public 
     def model
       @@model
     end

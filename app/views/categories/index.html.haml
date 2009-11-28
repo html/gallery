@@ -9,7 +9,7 @@
       %td= link_to 'Show', category
       %td= link_to 'Edit', edit_category_path(category)
       %td= link_to 'New album', new_category_album_path(category)
-      %td= link_to 'All albums', category_albums_path(category)
+      %td= link_to_item_with_count 'All albums', category_albums_path(category), category.albums.size
       %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
 
 %p= link_to "New Category", new_category_path

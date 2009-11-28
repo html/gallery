@@ -2,7 +2,8 @@ class PhotosController < ApplicationController
   @@parent_model = Album
   @@parent_key = :album_id
   @@model = Photo
-  before_filter :require_parent_item, :only => [:new, :create]
+  before_filter :require_parent_item, :only => [:new, :create, :update, :edit]
+  before_filter :optional_require_parent_item, :only => [:index, :show]
 
   def index
     if params[:album_id]
@@ -13,7 +14,12 @@ class PhotosController < ApplicationController
   end
   
   def show
-    @photo = Photo.find(params[:id])
+    if params[:album_id]
+      @photo = Photo.find_by_id_and_album_id(params[:id], parent_item)
+      not_found_unless @photo
+    else
+      @photo = Photo.find(params[:id])
+    end
   end
   
   def new

@@ -2,8 +2,8 @@ class AlbumsController < ApplicationController
   @@parent_key = :category_id
   @@parent_model = Category
   @@model = Album
-  before_filter :require_parent_item, :only => [:new, :create]
-  #before_filter :optional_require_parent_item, :only => :index
+  before_filter :require_parent_item, :only => [:new, :create, :update, :edit]
+  before_filter :optional_require_parent_item, :only => [:index, :show]
 
   def index
     if params[:category_id]
@@ -14,7 +14,12 @@ class AlbumsController < ApplicationController
   end
   
   def show
-    @album = Album.find(params[:id])
+    if params[:category_id]
+      @album = Album.find_by_id_and_category_id(params[:id], parent_item)
+      not_found_unless @album
+    else
+      @album = Album.find_by_id(params[:id])
+    end
   end
   
   def new

@@ -1,12 +1,14 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.list_all
   end
   
   def show
     @category = Category.find(params[:id])
   end
   
+  
+  if false
   def new
     @category = Category.new
   end
@@ -19,6 +21,7 @@ class CategoriesController < ApplicationController
     else
       render :action => 'new'
     end
+  end
   end
   
   def edit

@@ -7,9 +7,9 @@ class AlbumsController < ApplicationController
 
   def index
     if params[:category_id]
-      @albums = parent_item.albums
+      @albums = Album.paginate_by_category_id parent_item, :page => params[:page]
     else
-      @albums = Album.all
+      @albums = Album.paginate :page => params[:page]
     end
   end
   

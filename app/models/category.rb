@@ -26,4 +26,8 @@ class Category < ActiveRecord::Base
   def no_more_than_6_rows
     errors.add(:title, "Can't be no more than 6 rows in a table") if self.class.count >= 6
   end
+
+  def per_page
+    6
+  end
 end

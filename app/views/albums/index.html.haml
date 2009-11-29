@@ -11,6 +11,7 @@
       %td= link_to 'New photo', new_album_photo_path(album)
       %td= link_to_item_with_count 'All photos', album_photos_path(album), album.photos.size
       %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
+=will_paginate @albums
 
 - if @parent_item
   %p= link_to "New Album", new_category_album_path(@parent_item)

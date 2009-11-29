@@ -7,9 +7,9 @@ class PhotosController < ApplicationController
 
   def index
     if params[:album_id]
-      @photos = parent_item.photos
+      @photos = Photo.paginate_by_album_id parent_item, :page => params[:page]
     else
-      @photos = Photo.all
+      @photos = Photo.paginate :page => params[:page]
     end
   end
   

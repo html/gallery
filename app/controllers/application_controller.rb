@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   @@parent_model = nil
   @@parent_key = nil
   @parent_item = nil
+  before_filter :assign_host
   around_filter :catch_exceptions
   #before_filter :login_required
   #before_filter :has_permission?
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   protected 
+
+  def assign_host
+    @host = request.env['HTTP_HOST']
+  end
 
   def catch_exceptions
     #yield and return

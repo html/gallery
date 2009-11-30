@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.list_all
+    @categories = Category.paginate :page => params[:page]
   end
   
   def show
@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
   end
   
   
-  if false
   def new
     @category = Category.new
   end
@@ -21,7 +20,6 @@ class CategoriesController < ApplicationController
     else
       render :action => 'new'
     end
-  end
   end
   
   def edit

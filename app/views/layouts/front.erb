@@ -52,22 +52,15 @@ function MM_swapImage() { //v3.0
         </li>
         <li><a href="#">CONTACTS</a>
         </li>
-        <li><a href="#">Portfolio/WEDDINGS</a>
-                <ul>
-                        <li><a href="#">Ссылка 1</a></li>
-                        <li><a href="#">Ссылка 2</a></li>
-                </ul>
-        </li>
-    <li><a href="#">Portfolio/PORTRAITS</a>
-    		    <ul>
-                        <li><a href="#">Ссылка 1</a></li>
-                        <li><a href="#">Ссылка 2</a></li>
-                </ul></li>
-	<li><a href="#">Portfolio/TRAVEL</a>
-        	    <ul>
-                        <li><a href="#">Ссылка 1</a></li>
-                        <li><a href="#">Ссылка 2</a></li>
-                </ul></li>
+        <% @menu.each do |item| %>
+          <li><a href="javascript:;"><%=h item[:title]%></a>
+              <ul>
+                <% item[:children].each do |item| %>
+                  <li><a href="<%=url_for(cat_user_path(item)) %>"><%=h item.title %></a></li>
+                <% end %>
+              </ul>
+          </li>
+        <% end %>
 </ul>
 </div>
 <p>&nbsp;</p>

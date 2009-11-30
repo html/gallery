@@ -1,15 +1,15 @@
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
-  %tr
-    %td{ :colspan => 2}
-      = will_paginate @items
-  - for item in @items
-    %tr.tr
-      %td{ :width => 150 }
-        %div{ :align => 'right' }=image_tag '/images/rails.png'
-      %td
-        .map 
-          %p#p11
-            =link_to item.title, photos_user_path(item)
-  %tr
-    %td{ :colspan => 2}
-      = will_paginate @items
+  - if @items.size.zero?
+    %tr
+      %td No albums in this category
+  - else
+    =render :partial => '/paginate_part', :items => @items
+    - for item in @items
+      %tr.tr
+        %td{ :width => 150 }
+          %div{ :align => 'right' }=image_tag '/images/rails.png'
+        %td
+          .map 
+            %p#p11
+              =link_to item.title, photos_user_path(item)
+    =render :partial => '/paginate_part', :items => @items

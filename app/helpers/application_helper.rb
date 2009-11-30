@@ -7,14 +7,14 @@ module ApplicationHelper
   end
 
   def albums_user_path(item)
-    return :controller => :index, :action => :albums, :id => item
+    return url_for(:controller => :index, :action => :albums, :id => item)
   end
 
   def cat_user_path(item)
-    return :controller => :index, :action => :cat, :id => item
+    return url_for(:controller => :index, :action => :cat, :id => item)
   end
 
   def photos_user_path(item)
-    return :controller => :index, :action => :images, :album_id => item
+    return url_for(:controller => :index, :action => :images, :album_id => item)
   end
 end

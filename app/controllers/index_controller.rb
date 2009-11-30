@@ -1,11 +1,15 @@
 class IndexController < ApplicationController
   layout 'front'
+  before_filter :assign_menu
 
   def index
   end
 
   def images
-    @items = Photo.find_all_by_album_id(params[:album_id])
+    @album = Album.find_by_id params[:album_id]
+    not_found_unless @album
+
+    @items = Photo.paginate_by_album_id(params[:album_id], :page => params[:page], :per_page => 9)
   end
 
   def cat
@@ -15,11 +19,8 @@ class IndexController < ApplicationController
     @items = Album.paginate_by_category_id @category, :page => params[:page]
   end
 
-  def album
-    @album = Album.find_by_id params[:id]
-
-    not_found_unless @album
-
-    @items = Photo.paginate_by_id params[:id]
+  protected
+  def assign_menu
+    @menu = Category.get_menu_items
   end
 end

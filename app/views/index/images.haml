@@ -1,18 +1,21 @@
 - content_for :css do
   = stylesheet_link_tag '/fancybox/jquery.fancybox-1.2.6.css'
 = javascript_include_tag 'jquery.min', '/fancybox/jquery.fancybox-1.2.6.pack.js'
-%table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
-  - for i in 1..3
-    - break if @items.size == 0
-    %tr
-      - for k in 1..3
-        - i = @items.shift
-        %td{ :width => "150", :align => "center" }
-          %div
-            - if i
-              = link_to(image_tag(i.photo.url(:thumb), :title => i.title, :alt => i.title), i.photo.url, :class => :box, :rel => :box)
-              %br
-              %p{ :align => "center" }= i.title
+- if @items.size.zero?
+  no images
+- else
+  %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
+    - for i in 1..3
+      - break if @items.size == 0
+      %tr
+        - for k in 1..3
+          - i = @items.shift
+          %td{ :width => "150", :align => "center" }
+            %div
+              - if i
+                = link_to(image_tag(i.photo.url(:thumb), :title => i.title, :alt => i.title), i.photo.url, :class => :box, :rel => :box)
+                %br
+                %p{ :align => "center" }= i.title
 :javascript
   $(function(){
     $('.box').fancybox({

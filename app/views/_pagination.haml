@@ -1,0 +1,37 @@
+- if previous_page
+  = link_to image_tag('/images/pagin/4.jpg', :class => "swap", :hover_image => "/images/pagin/3.jpg"), url_for_page(previous_page)
+- else
+  = image_tag('/images/pagin/4.jpg')
+
+- if defined? @executed_once
+  = link_to image_tag('/images/pagin/5.jpg', :class => "swap", :hover_image => "/images/pagin/6.jpg"), '#top'
+- else
+  - for i in first_page.upto(last_page)
+    - if i == current_page
+      = i
+    - else
+      = link_to i, url_for_page(i)
+
+- if next_page
+  = link_to image_tag('/images/pagin/1.jpg', :class => "swap", :hover_image => "/images/pagin/2.jpg"), url_for_page(next_page)
+- else
+  = image_tag('/images/pagin/1.jpg')
+
+
+- if !defined? @executed_once
+  - @executed_once = true
+  :javascript
+    $(function(){
+      $([2, 6]).each(function(){
+        (new Image).src = this + '.jpg';
+      });
+
+      $('.swap').each(function(){
+        $(this).hover(function(){
+          $.data(this, 'waiting_image', this.src);
+          this.src = $(this).attr('hover_image');
+        }, function(){
+          this.src = $.data(this, 'waiting_image');
+        })
+      });
+    });

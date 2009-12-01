@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/selenium_on_rails"]
 	path = vendor/plugins/selenium_on_rails
 	url = git://github.com/ryanb/selenium-on-rails.git
+[submodule "vendor/plugins/partial_renderer"]
+	path = vendor/plugins/partial_renderer
+	url = git://github.com/html/partial_renderer.git

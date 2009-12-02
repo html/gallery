@@ -15,7 +15,6 @@ parent_category = Factory(:category)
 Factory.define :album do |f|
   f.title 'Test title'
   f.category_id parent_category.to_param
-  f.image { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
 end
 
 parent_album = Factory(:album)

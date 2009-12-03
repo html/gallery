@@ -3,6 +3,7 @@
 %p
   %strong Title:
   =h @album.title
+= image_tag @album.image.url
 
 %p
   = link_to "Edit", edit_album_path(@album)

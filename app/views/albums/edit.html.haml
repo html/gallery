@@ -1,6 +1,6 @@
 - title "Edit Album"
 
-= render :partial => 'form'
+= render :partial => 'form', :images => @images, :first_image => @first_image
 
 %p
   = link_to "Show", album_path(@album)

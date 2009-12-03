@@ -1,3 +1,4 @@
+= javascript_include_jquery
 %tr
-  %td.pagination{ :colspan => 2, :align => "center"}
+  %td.pagination{ :colspan => defined?(cols) ? cols : 2, :align => "center"}
     = will_paginate @items

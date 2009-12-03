@@ -39,11 +39,14 @@ class AlbumsController < ApplicationController
   
   def edit
     @album = Album.find(params[:id])
+    @images = Photo.find_all_by_album_id @album
+    @first_image = @images.first
   end
   
   def update
-    @album = Album.find(params[:id])
-    if @album.update_attributes(params[:album])
+    edit
+
+    if @album.update_attributes(params[:album]) && @album.add_image(params[:photo])
       flash[:notice] = "Successfully updated album."
       redirect_to @album
     else

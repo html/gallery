@@ -1,0 +1,89 @@
+%div#crop_source_container
+  = image_tag @first_image ? @first_image.photo.url : '', :id => 'crop_source', :class => 'crop'
+%div#crop_preview_container
+  = image_tag @first_image ? @first_image.photo.url : '', :id => 'crop_preview'
+.clear
+- if @images
+  %ul.gallery
+    - @images.each do |i|
+      %li 
+        = link_to_function image_tag(i.photo.url(:thumb), :id => "image_#{i.id}"), 'chooseImage(' + [i.id, i.photo.url.to_json].join(',') + ')'
+  .clear
+- else
+  No images
+.clear
+
+= javascript_include_jquery
+= javascript_include_tag 'jquery/plugins/jquery.Jcrop.min',  'jquery/plugins/jquery.prettyGallery.js'
+:javascript
+  function createCropArea($image, $preview, $x, $y, $w){
+    COEFX = $image.width();
+    COEFY = $image.height();
+
+    function showPreview(coords){
+      if (parseInt(coords.w) > 0){
+        var rx = 100 / coords.w;
+        var ry = 100 / coords.h;
+
+        $preview.css({
+          width: Math.round(rx * COEFX) + 'px',
+          height: Math.round(ry * COEFY) + 'px',
+          marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+          marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        });
+
+        $x.val(coords.x);
+        $y.val(coords.y);
+        $w.val(coords.w);
+      }
+    };
+
+    $image.Jcrop({
+      onChange: showPreview,
+      onSelect: showPreview,
+      aspectRatio: 1,
+      setSelect: [100, 100, 20, 20]
+    });
+  }
+
+  function addJcrop(){
+    createCropArea(
+      $('#crop_source'),
+      $('#crop_preview'),
+      $('#crop_x'),
+      $('#crop_y'),
+      $('#crop_w')
+    );
+  }
+
+  function chooseImage(id, src){
+    $('#crop_target').val(id);
+    
+    var im = new Image;
+    im.src = src;
+
+    $(im).load(function(){
+      $('#crop_source, #crop_preview').attr('src', src);
+
+      var api = $('#crop_source').data('Jcrop');
+      if(api && api.destroy){
+        $('#crop_source').removeData('Jcrop');
+        api.destroy();
+        addJcrop();
+      }
+    });
+  }
+
+  $(function(){
+    addJcrop();
+
+    $('.gallery').prettyGallery({
+      'navigation':'bottom',
+      'itemsPerPage':5
+    });
+  });
+
+= hidden_field :photo, 'crop_w', :id => 'crop_w'
+= hidden_field :photo, 'crop_y', :id => 'crop_y'
+= hidden_field :photo, 'crop_x', :id => 'crop_x'
+= hidden_field :photo, 'crop_target', :id => 'crop_target', :value => @first_image.to_param

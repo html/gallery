@@ -1,4 +1,3 @@
-= javascript_include_tag 'jquery.min'
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
   - if @items.size.zero?
     %tr
@@ -8,7 +7,7 @@
     - for item in @items
       %tr.tr
         %td{ :width => 150 }
-          %div{ :align => 'right' }=image_tag '/images/rails.png'
+          %div{ :align => 'right' }=image_tag item.image.url
         %td
           .map 
             %p#p11

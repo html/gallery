@@ -1,0 +1,32 @@
+.crop {
+  border:1px solid black;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+}
+
+.gallery img {
+  padding:10px;
+}
+
+.gallery {
+  height:100px;
+}
+.gallery li {
+  height:100px;
+  list-style-type:none;
+}
+
+#crop_preview_container {
+  margin:10px;
+  width:100px;height:100px;overflow:hidden;
+  float:left;
+}
+
+#crop_source_container {
+  margin:10px;
+  float:left;
+  height:300px;
+  width:300px;
+}

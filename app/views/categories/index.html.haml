@@ -11,10 +11,10 @@
       %td= h category.get_title
       %td= link_to 'Show', category
       %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'New album', new_category_album_path(category)
-      %td= link_to_item_with_count 'All albums', category_albums_path(category), category.albums.size
+      %td= link_to 'New Album', new_category_album_path(category)
+      %td= link_to_item_with_count 'All Albums', category_albums_path(category), category.albums.size
       %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
 
-= will_paginate @categories
+=default_pagination :items => @categories
 
 %p= link_to "New Category", new_category_path

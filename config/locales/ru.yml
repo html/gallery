@@ -1,0 +1,31 @@
+ru:
+  activerecord:
+    models:
+      category: категория
+    attributes:
+      category:
+        title: Заголовок
+      album:
+        title: Заголовок
+      photo:
+        title: Заголовок
+        photo: Фото
+      title: Заголовок
+  hello: Hello 
+  New: Новая
+  Show: Показать
+  Edit: Редактировать
+  New Album: Создать альбом
+  New Category: Создать категорию
+  New Photo: Добавить фото
+  All Photos: Все фото
+  All Albums: Все альбомы
+  Back to List: Назад к списку
+  Destroy: Удалить
+  Category: Просмотр категории
+  Categories: Категории
+  Edit Category: Редактировать категорию
+  View All: Показать все
+  Edit Album: Редактировать альбом
+  Album: Просмотр альбома
+  Edit Photo: Редактировать фото

@@ -11,7 +11,7 @@
       %td= link_to 'Show', photo
       %td= link_to 'Edit', edit_album_photo_path(photo.album_id, photo)
       %td= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete
-=will_paginate @photos
+=default_pagination :items => @photos
 
 - if @parent_item
   %p= link_to "New Photo", new_album_photo_path(@parent_item)

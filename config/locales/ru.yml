@@ -15,17 +15,23 @@ ru:
   New: Новая
   Show: Показать
   Edit: Редактировать
-  New Album: Создать альбом
+  New Album: Создать альбом в категории
   New Category: Создать категорию
-  New Photo: Добавить фото
+  New Photo: Добавить фото к альбому
   All Photos: Все фото
   All Albums: Все альбомы
   Back to List: Назад к списку
   Destroy: Удалить
   Category: Просмотр категории
-  Categories: Категории
+  Categories: Список категорий
   Edit Category: Редактировать категорию
   View All: Показать все
   Edit Album: Редактировать альбом
   Album: Просмотр альбома
   Edit Photo: Редактировать фото
+  Photo: Фото
+  Photos: Все фото
+  Title: Заголовок
+  Albums: Список альбомов
+  for album %s: 'к альбому "%s"'
+  for category %s: 'категории "%s"'

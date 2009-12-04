@@ -3,6 +3,8 @@ class Album < ActiveRecord::Base
   validates_presence_of :title
   has_many :photos
   has_attached_file :image, :storage => :filesystem
+  belongs_to :category
+  validates_associated :category
 
 
   def add_image(params)

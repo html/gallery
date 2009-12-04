@@ -1,6 +1,7 @@
 - title "Photo"
 
-= image_tag @photo.photo.url, :width => "100%"
+.photo
+  = image_tag @photo.photo.url
 
 %p
   = link_to "Edit", edit_photo_path(@photo)
@@ -8,3 +9,5 @@
   = link_to "Destroy", @photo, :confirm => 'Are you sure?', :method => :delete
   |
   = link_to "View All", photos_path
+  |
+  = link_to t("Photos") + " " + sprintf(t("for album %s"), h(@photo.album.title)), album_photos_path(@photo.album)

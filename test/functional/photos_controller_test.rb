@@ -33,7 +33,10 @@ class PhotosControllerTest < ActionController::TestCase
   
   context "show action" do
     should "render show template" do
-      get :show, :id => Factory(:photo)
+      child, parent = get_child_parent_fixtures
+      child.album = parent
+      child.save
+      get :show, :id => child
       assert_template 'show'
     end
 
@@ -105,12 +108,14 @@ class PhotosControllerTest < ActionController::TestCase
   context "edit action" do
     should "render edit template" do
       c,p = get_child_parent_fixtures
+      c.album =p
+      c.save
       get :edit, :id => c, :album_id => p
       assert_template 'edit'
     end
 
     should "fail when album is not specified" do
-      post :edit, :id => Photo.first
+      post :edit, :id => Factory(:photo)
       assert_response :not_found
     end
   end

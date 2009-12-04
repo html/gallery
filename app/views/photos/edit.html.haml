@@ -6,3 +6,5 @@
   = link_to "Show", photo_path(@photo)
   |
   = link_to "View All", photos_path
+  |
+  = link_to t("Photos") + " " + sprintf(t("for album %s"), @photo.album.title), album_photos_path(@photo.album)

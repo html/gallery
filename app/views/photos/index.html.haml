@@ -1,17 +1,20 @@
-- title "Photos"
+- title t("Photos"), :parent => { :item => @parent_item, :name => 'album' }
+
+- if @parent_item
+  %p
+    = link_to "New Photo", new_album_photo_path(@parent_item)
+    |
+    = link_to "Albums", category_albums_path(@parent_item.category_id)
+
 
 %table
   %tr
     %th
-    %th Title
+  =render :partial => '/paginate_part', :locals => {:items => @categories, :cols => 4}
   - for photo in @photos
     %tr
       %td= image_tag photo.photo.url(:thumb)
-      %td= h photo.title
       %td= link_to 'Show', photo
       %td= link_to 'Edit', edit_album_photo_path(photo.album_id, photo)
       %td= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete
-=default_pagination :items => @photos
-
-- if @parent_item
-  %p= link_to "New Photo", new_album_photo_path(@parent_item)
+  =render :partial => '/paginate_part', :locals => {:items => @categories, :cols => 4}

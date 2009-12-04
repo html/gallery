@@ -14,7 +14,7 @@ parent_category = Factory(:category)
 
 Factory.define :album do |f|
   f.title 'Test title'
-  f.category_id parent_category.to_param
+  f.category_id parent_category.id
   f.image { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
 end
 
@@ -22,7 +22,7 @@ parent_album = Factory(:album)
 
 Factory.define :photo do |f|
   f.photo { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
-  f.album_id parent_album.to_param
+  f.album_id parent_album.id
 end
 
 class ActiveSupport::TestCase

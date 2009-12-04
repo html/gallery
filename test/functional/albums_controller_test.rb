@@ -9,6 +9,7 @@ class AlbumsControllerTest < ActionController::TestCase
 
   context "index action" do
     should "render index template" do
+      Album.update_all ['category_id = ?', Factory(:category).id]
       get :index
       assert_template 'index'
     end

@@ -33,7 +33,7 @@ class PhotosControllerTest < ActionController::TestCase
   
   context "show action" do
     should "render show template" do
-      get :show, :id => Photo.first
+      get :show, :id => Factory(:photo)
       assert_template 'show'
     end
 
@@ -116,12 +116,6 @@ class PhotosControllerTest < ActionController::TestCase
   end
   
   context "update action" do
-    should "render edit template when model is invalid" do
-      child, parent = get_child_parent_fixtures
-      put :update, :id => child, :album_id => parent, :photo => {:title => ''}
-      assert_template 'edit'
-    end
-  
     should "redirect when model is valid" do
       Photo.any_instance.stubs(:valid?).returns(true)
       child, parent = get_child_parent_fixtures
@@ -137,7 +131,7 @@ class PhotosControllerTest < ActionController::TestCase
   
   context "destroy action" do
     should "destroy model and redirect to index action" do
-      photo = Photo.first
+      photo = Factory(:photo)
       delete :destroy, :id => photo
       assert_redirected_to photos_url
       assert !Photo.exists?(photo.id)

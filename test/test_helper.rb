@@ -21,7 +21,6 @@ end
 parent_album = Factory(:album)
 
 Factory.define :photo do |f|
-  f.title 'Test title'
   f.photo { File.new(File.join(File.dirname(__FILE__), 'fixtures', '1.gif'), 'rb') }
   f.album_id parent_album.to_param
 end

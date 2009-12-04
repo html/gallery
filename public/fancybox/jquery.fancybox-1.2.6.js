@@ -559,7 +559,7 @@
 		html += '</div>';
 		html += '</div>';
 		
-		html += '<div id="fancy_title"></div>';
+		//html += '<div id="fancy_title"></div>';
 		
 		$(html).appendTo("body");
 

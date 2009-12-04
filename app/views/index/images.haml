@@ -1,7 +1,7 @@
 - content_for :css do
   = stylesheet_link_tag '/fancybox/jquery.fancybox-1.2.6.css'
 = javascript_include_jquery
-= javascript_include_tag '/fancybox/jquery.fancybox-1.2.6.pack.js'
+= javascript_include_tag '/fancybox/jquery.fancybox-1.2.6.js'
 - items = @items.clone
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
   - if @items.size.zero?
@@ -17,9 +17,8 @@
           %td{ :width => "150", :align => "center" }
             %div
               - if i
-                = link_to(image_tag(i.photo.url(:thumb), :title => i.title, :alt => i.title), i.photo.url, :class => :box, :rel => :box)
+                = link_to(image_tag(i.photo.url(:thumb)), i.photo.url, :class => :box, :rel => :box)
                 %br
-                %p{ :align => "center" }= i.title
     =render :partial => '/paginate_part', :locals => {:items => items, :cols => 3}
 :javascript
   $(function(){

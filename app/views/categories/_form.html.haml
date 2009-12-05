@@ -1,5 +1,9 @@
 - form_for @category do |f|
   = f.error_messages
+  %p 
+    = f.label :menu_id
+    %br
+    = f.select :menu_id, Category.options.invert
   %p
     = f.label :title
     %br

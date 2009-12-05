@@ -8,6 +8,7 @@ require 'factory_girl'
 
 Factory.define :category do |f|
   f.title 'Test title'
+  f.menu_id 1
 end
 
 parent_category = Factory(:category)

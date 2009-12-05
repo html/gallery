@@ -6,7 +6,7 @@
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
   - if @items.size.zero?
     %tr
-      %td no images
+      %td=t('No images in this album')
   - else
     =render :partial => '/paginate_part', :locals => {:items => items, :cols => 3}
     - for i in 1..3

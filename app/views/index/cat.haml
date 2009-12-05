@@ -1,7 +1,7 @@
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
   - if @items.size.zero?
     %tr
-      %td No albums in this category
+      %td=t('No albums in this category')
   - else
     =default_pagination :items => @items
     - for item in @items

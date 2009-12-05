@@ -5,6 +5,7 @@ ru:
     attributes:
       category:
         title: Заголовок
+        menu: Пункт меню
       album:
         title: Заголовок
       photo:
@@ -46,3 +47,5 @@ ru:
   Successfully destroyed category: Успешно удалена категория
   Successfully changed image: Успешно изменена картинка
   Change Image: Изменить картинку
+  No albums in this category: Нет альбомов в данной категории
+  No images in this album: Нет фотографий в данном альбоме

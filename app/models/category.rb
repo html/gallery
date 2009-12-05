@@ -1,12 +1,14 @@
 class Category < ActiveRecord::Base
   cattr_accessor :options
-  attr_accessible :title
+  attr_accessible :title, :menu_id
   validates_presence_of :title
+  validates_presence_of :menu_id
+  validates_numericality_of :menu_id, :less_than_or_equal => 3, :more_than_or_equal => 1
   has_many :albums
   @@options = {
     1 => 'Portfolio/Weddings',
     2 => 'Portfolio/Portraits',
-    3 => 'Portfoli/Travel'
+    3 => 'Portfolio/Travel'
   }
 
   def get_title

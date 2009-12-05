@@ -35,3 +35,12 @@ ru:
   Albums: Список альбомов
   for album %s: 'к альбому "%s"'
   for category %s: 'категории "%s"'
+  Successfully updated photo: Успешно обновлено фото
+  Successfully created photo: Успешно добавлено фото
+  Successfully destroyed photo: Успешно удалено фото
+  Successfully created album: Успешно создан альбом
+  Successfully updated album: Успешно обновлен альбом
+  Successfully destroyed album: Успешно удален альбом
+  Successfully created category: Успешно создана категория
+  Successfully updated category: Успешно обновлена категория
+  Successfully destroyed category: Успешно удалена категория

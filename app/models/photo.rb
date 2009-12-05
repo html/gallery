@@ -7,4 +7,5 @@ class Photo < ActiveRecord::Base
   validates_attachment_presence :photo
   belongs_to :album
   validates_associated :album
+  validates_attachment_presence :photo
 end

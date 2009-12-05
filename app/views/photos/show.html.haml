@@ -4,7 +4,7 @@
   = image_tag @photo.photo.url
 
 %p
-  = link_to "Edit", edit_photo_path(@photo)
+  = link_to "Edit", edit_album_photo_path(@photo.album, @photo)
   |
   = link_to "Destroy", @photo, :confirm => 'Are you sure?', :method => :delete
   |

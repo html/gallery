@@ -39,14 +39,12 @@ class AlbumsController < ApplicationController
   
   def edit
     @album = Album.find(params[:id])
-    @images = Photo.find_all_by_album_id @album
-    @first_image = @images.first
   end
   
   def update
     edit
 
-    if @album.update_attributes(params[:album]) && @album.add_image(params[:photo])
+    if @album.update_attributes(params[:album])
       flash[:notice] = "Successfully updated album."
       redirect_to @album
     else
@@ -59,5 +57,16 @@ class AlbumsController < ApplicationController
     @album.destroy
     flash[:notice] = "Successfully destroyed album."
     redirect_to albums_url
+  end
+
+  def change_image
+    @album = Album.find(params[:id])
+    @images = Photo.find_all_by_album_id @album
+    @first_image = @images.first
+
+    if request.post? && @album.add_image(params[:photo])
+      flash[:notice] = "Successfully changed image."
+      redirect_to albums_url
+    end
   end
 end

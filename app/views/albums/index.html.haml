@@ -12,11 +12,13 @@
     %th=t :Title
   =render :partial => '/paginate_part', :locals => {:items => @categories, :cols => 6}
   - for album in @albums
+    - category = @parent_item || album.category_id
     %tr
       %td= image_tag album.image.url
       %td= h album.title
       -#%td= link_to 'Show', album
-      %td= link_to 'Edit', edit_category_album_path(@parent_item || album.category_id, album)
+      %td= link_to 'Edit', edit_category_album_path(category, album)
+      %td= link_to 'Change Image', url_for(:controller => :albums, :action => :change_image, :id => album)
       %td= link_to 'New Photo', new_album_photo_path(album)
       %td= link_to_item_with_count 'All Photos', album_photos_path(album), album.photos.size
       %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete

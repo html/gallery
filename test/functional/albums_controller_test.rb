@@ -104,6 +104,7 @@ class AlbumsControllerTest < ActionController::TestCase
   context "edit action" do
     should "render edit template" do
       c,p = get_child_parent_fixtures
+      c.category = p;c.save
       get :edit, :id => c, :category_id => p
       assert_template 'edit'
     end
@@ -117,6 +118,8 @@ class AlbumsControllerTest < ActionController::TestCase
   context "update action" do
     should "render edit template when model is invalid" do
       child, parent = get_child_parent_fixtures
+      child.category = parent
+      child.save
       put :update, :id => child, :category_id => parent, :album => {:title => ''}
       assert_template 'edit'
     end

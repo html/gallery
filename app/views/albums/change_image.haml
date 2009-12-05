@@ -1,0 +1,18 @@
+-title "Change Image", :parent => { :item => @album, :name => 'album' }
+- stylesheet 'jcrop/jquery.Jcrop.css', 'prettyGallery/prettyGallery.css'
+- form_tag do
+  %div#choosearea
+    - if !@images.size.zero?
+      = render :partial => 'crop_image', :images => @images, :first_image => @first_image
+    - else
+      Пожалуйста 
+      = link_to 'добавьте', new_album_photo_url(@album, nil)
+      картинки к данному альбому
+  =submit_tag 'Submit'
+
+%p
+  = link_to "Edit", edit_album_path(@album)
+  |
+  = link_to "Destroy", @album, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", albums_path

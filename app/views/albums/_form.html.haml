@@ -1,28 +1,8 @@
-= stylesheet_link_tag 'jcrop/jquery.Jcrop.css'
-= stylesheet_link_tag 'prettyGallery/prettyGallery.css'
 - form_for [@parent_item, @album], :html => { :multipart => true } do |f|
   = f.error_messages
   %p
     = f.label :title
     %br
     = f.text_field :title
-  - if defined? @images
-    %p
-      = link_to_function 'Выбрать картинку', :id => "chooseImage"
-      %br
-      %div#choosearea{ :style => 'padding-left:20px' }
-        - if !@images.size.zero?
-          = render :partial => 'crop_image', :images => @images, :first_image => @first_image
-          :javascript
-            $(function(){
-              var c = $('#choosearea');
-              $('#chooseImage').click(function(){
-                c.toggle();
-              });
-            });
-        - else
-          Пожалуйста 
-          = link_to 'добавьте', new_album_photo_url(@album, nil)
-          картинки к данному альбому
   %p
     = f.submit "Submit"

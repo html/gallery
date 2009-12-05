@@ -31,12 +31,13 @@ ul#cssmenu ul {
         margin: 0;
         border: 0 none;
         padding: 0;
-        width: 150px;
+        width: auto;
         list-style: none;
         display: none;
         position: absolute;
         top: 15px;
         left: 0;
+        text-align:left;
 }
 
 ul#cssmenu ul:after {

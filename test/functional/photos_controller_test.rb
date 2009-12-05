@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class PhotosControllerTest < ActionController::TestCase
+  def setup
+    login_as users(:admin)
+  end
+
   setup do
     PhotosController.model = Photo
     PhotosController.parent_model = Album
@@ -129,7 +133,7 @@ class PhotosControllerTest < ActionController::TestCase
     end
 
     should "fail when album is not specified" do
-      post :update, :id => Photo.first, :album_id => nil, :album => Factory.build(:album).attributes
+      post :update, :id => Factory(:photo), :album_id => nil, :album => Factory.build(:album).attributes
       assert_response :not_found
     end
   end

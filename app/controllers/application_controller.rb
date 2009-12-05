@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include AuthenticatedSystem
+  before_filter :has_permission?
   @@model = nil
   @@parent_model = nil
   @@parent_key = nil

@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
+  def setup
+    login_as users(:admin)
+  end
+
   context "index action" do
     should "render index template" do
       get :index

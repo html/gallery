@@ -1,7 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  skip_before_filter :has_permission?
 
   # render new.rhtml
   def new
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    flash[:error] = sprintf(t("Couldn't log you in as %s"), params[:login])
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end

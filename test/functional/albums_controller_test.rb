@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class AlbumsControllerTest < ActionController::TestCase
+  def setup
+    login_as users(:admin)
+  end
+
   setup do
     AlbumsController.model = Album
     AlbumsController.parent_model = Category

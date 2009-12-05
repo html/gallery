@@ -1,4 +1,5 @@
 class IndexController < ApplicationController
+  skip_before_filter :has_permission?
   layout 'front'
   before_filter :assign_menu
 

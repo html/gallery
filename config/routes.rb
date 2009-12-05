@@ -51,6 +51,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.error 'error', :controller => 'sessions', :action => :new
+  map.connect '/admin', :controller => :categories, :action => :index
   map.connect '/images/:album_id', :controller => :index, :action => :images
   map.connect '/cat/:id', :controller => :index, :action => :cat
   map.connect ':controller/:action/:id'

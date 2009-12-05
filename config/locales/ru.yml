@@ -12,6 +12,8 @@ ru:
         title: Заголовок
         photo: Фото
       title: Заголовок
+      user:
+        password: Пароль
   hello: Hello 
   New: Новая
   Show: Показать
@@ -49,3 +51,6 @@ ru:
   Change Image: Изменить картинку
   No albums in this category: Нет альбомов в данной категории
   No images in this album: Нет фотографий в данном альбоме
+  Logged in successfully: Успешно вошли
+  You have been logged out: Успешно вышли
+  Couldn't log you in as %s: Невозможно зайти под "%s"

@@ -1,0 +1,34 @@
+#slider ul, #slider li{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+#slider, #slider li{ 
+  /* 
+      define width and height of container element and list item (slide)
+      list items must be the same size as the slider area
+  */ 
+  width:100px;
+  height:100px;
+  overflow:hidden; 
+  padding-bottom:10px;
+}
+#slider {
+  height:300px;
+}
+
+#nextBtn, #prevBtn {
+  display:block;
+}
+#nextBtn {
+  float:right;
+  clear:right;
+}
+#prevBtn {
+  float:left;
+  clear:left;
+}
+
+#preview {
+  height:300px;
+}

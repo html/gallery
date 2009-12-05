@@ -10,7 +10,8 @@ class IndexController < ApplicationController
     @album = Album.find_by_id params[:album_id]
     not_found_unless @album
 
-    @items = Photo.paginate_by_album_id(params[:album_id], :page => params[:page], :per_page => 9)
+    #@items = Photo.paginate_by_album_id(params[:album_id], :page => params[:page], :per_page => 9)
+    @items = Photo.find_all_by_album_id(params[:album_id])
   end
 
   def cat

@@ -8,9 +8,11 @@ class Album < ActiveRecord::Base
 
 
   def add_image(params)
-    photo = Photo.find_by_id params[:crop_target]
+    begin
+      photo = Photo.find_by_id params[:crop_target]
     rescue 
       return true
+    end
     return true unless photo
 
     s = self

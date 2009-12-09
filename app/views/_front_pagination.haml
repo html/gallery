@@ -1,0 +1,28 @@
+= javascript_include_jquery
+%table{ :cellspacing => "0", :border => "0", :align => "center", :width => "10%" }
+  %tr
+    %td
+      - if previous_page
+        =link_to image_tag('/images/nazad.png', :class => 'swap', :hover_image => '/images/nazad1.png'), url_for_page(previous_page)
+      - else
+        =image_tag('/images/nazad.png')
+    %td
+      =link_to image_tag('/images/verx.png', :class => 'swap', :hover_image => '/images/verx1.png'), '#verx'
+    %td
+      - if next_page
+        =link_to image_tag('/images/next.png', :class => 'swap', :hover_image => '/images/next1.png'), url_for_page(next_page)
+      - else
+        =image_tag('/images/next.png')
+
+  :javascript
+    $(function(){
+      $('.swap').each(function(){
+        (new Image()).src = $(this).attr('hover_image');
+        $(this).hover(function(){
+          $.data(this, 'waiting_image', this.src);
+          this.src = $(this).attr('hover_image');
+        }, function(){
+          this.src = $.data(this, 'waiting_image');
+        })
+      });
+    });

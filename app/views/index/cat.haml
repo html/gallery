@@ -3,7 +3,6 @@
     %tr
       %td=t('No albums in this category')
   - else
-    =default_pagination :items => @items
     - for item in @items
       %tr.tr
         %td{ :width => 150 }
@@ -12,4 +11,4 @@
           .map 
             %p#p11
               =link_to item.title, photos_user_path(item)
-    =default_pagination :items => @items
+    =will_paginate @items, :partial => '/front_pagination'

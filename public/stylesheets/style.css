@@ -1,19 +1,45 @@
+body {
+	background-image:url(/images/bg1.jpg);
+	background-attachment: scroll;
+	background-position: left top;
+	background-repeat: repeat;
+}
+#background {	
+	background-image:url(/images/top.png);
+	background-attachment: fixed;
+	background-position: left top;
+	background-repeat: repeat-x;
+}
+
 
 .styl1	 {
 	font-size: 9px;
 	font-family: Geneva, Arial, Helvetica, sans-serif; }
 
 
+#top {
+background: #0f4063;
+	margin: -6px 0px 0px -6px;
+width: 101%;
+height: 100px;
+border:none;
+}
+#daun {
+background: #0f4063;
+margin: 100px 0px -100px -6px;
+width: 101%;
+height: 100px;
+border:none;
+}
 ul#cssmenu {
-        width:460px;
+        width:440px;
         margin: 0;
         border: 0 none;
         padding: 0;
         list-style: none;
-        background: #FFFFFF;
-        height: 30px;
-        font: bold 9px/9px Geneva, Arial, Helvetica, sans-serif; 
-        border-left:#FFFFFF	 1px solid;
+        height: 20px;
+        font: 14px/10px Acens;
+        border-left: 0px solid;
 }
 
 ul#cssmenu li {
@@ -25,6 +51,7 @@ ul#cssmenu li {
         list-style: none;
         position: relative;
         height: 20px;
+		
 }
 
 ul#cssmenu ul {
@@ -38,12 +65,13 @@ ul#cssmenu ul {
         top: 15px;
         left: 0;
         text-align:left;
+		
 }
 
 ul#cssmenu ul:after {
         clear: both;
         display: block;
-        font: 1px/0px serif;
+        font: 2px/1px serif;
         content: ".";
         height: 0;
         visibility: hidden;
@@ -58,35 +86,48 @@ ul#cssmenu ul li {
 
 /* Main Menu */
 ul#cssmenu a {
-        border: 0px;
-        padding: 0 10px;
-        float: none !important;
-        float: left;
-        display: block;
-        background: #FFFFFF;
-        color: #000000;
-        font: bold 9px/10px Geneva, Arial, Helvetica, sans-serif; 
-        text-decoration: none;
-        height: auto !important;
-        height: 1%;
+	border: 0px;
+	padding: 0 4px;
+	float: none !important;
+	float: left;
+	display: block;
+	color: #FFFFFF;
+	font: 14px/10px Acens;
+	text-decoration: none;
+	height: auto !important;
+	height: 1%;
 }
+
+.block_opacity {
+
+    opacity: 0.5;filter: alpha(opacity=50);
+
+} 
+.block_opacity1 {
+
+    opacity: 0.3;filter: alpha(opacity=30);
+
+} 
+.block_opacity2 {
+
+    opacity: 0.8;filter: alpha(opacity=80);
+
+} 
 
 /* Main Menu Hover */
 ul#cssmenu a:hover,
 ul#cssmenu li:hover a,
 ul#cssmenu li.iehover a {
-	background: #FFFFFF;
-	color:#FF0000;
-	border-top:#FFFFFF 1px solid;
+	color:#000000;
+	border-top: 0px solid;
 }
 
 /* Second Menu */
 ul#cssmenu li:hover li a,
 ul#cssmenu li.iehover li a {
-        border-top: 2px solid #FFFFFF;
+        border-top: 0px solid;
         float: none;
-        background: #FFFFFF;
-        color: #000000;
+        color: #FFFFFF;
 }
 
 /* Second Menu Hover */
@@ -94,17 +135,17 @@ ul#cssmenu li:hover li a:hover,
 ul#cssmenu li:hover li:hover a,
 ul#cssmenu li.iehover li a:hover,
 ul#cssmenu li.iehover li.iehover a {
-        border-top: 2px solid #000000;
-        background: #FFFFFF;
-        color:#FF0000;
-        border:#FFFFFF 1px solid;
+	border-top: 2px solid #FFFFFF;
+	background: #FFFFFF;
+	color:#000000;
+	border:#000000 0px solid;
 }
 
 ul#cssmenu ul ul {
         display: none;
         position: absolute;
         top: 0;
-        left: 170px;
+        left: 10px;
 }
 
 ul#cssmenu li:hover ul ul,
@@ -118,3 +159,7 @@ ul#cssmenu li.iehover ul,
 ul#cssmenu ul li.iehover ul {
         display: block;
 } 
+
+img {
+  border:0;
+}

@@ -16,6 +16,7 @@ class IndexController < ApplicationController
 
     #@items = Photo.paginate_by_album_id(params[:album_id], :page => params[:page], :per_page => 9)
     @items = Photo.find_all_by_album_id(params[:album_id])
+    @first = @items.first || Photo.new
   end
 
   def cat

@@ -12,11 +12,18 @@
       %td
         #slider{ :style => 'float:left;margin:10px 0'}
           %ul
-            = list_of @items do |i|
-              =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s)', i.photo.url.to_json), :rel => :box
+            - while !@items.size.zero? do
+              %li
+                - 3.times do
+                  - i = @items.shift
+                  - if !i.nil?
+                    %div{ :style => 'height:100px' }
+                      =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s)', i.photo.url.to_json), :rel => :box
+        %span#prevBtn=link_to_function image_tag('/images/verx.png', :hover_image => '/images/verx1.png', :class => 'swap')
+        %span#nextBtn=link_to_function image_tag('/images/dun.png', :hover_image => '/images/dun1.png', :class => 'swap')
       -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
       %td#preview{ :style => 'width:550px;', :align => 'center', :valign => 'top'}
-        =link_to image_tag(@items.first.photo.url, :style =>  'max-height:300px;max-width:550px;margin:10px;'), @items.first.photo.url, :class => :box, :rel => :box
+        =link_to image_tag(@first.photo.url, :style =>  'max-height:300px;max-width:550px;margin:10px;'), @first.photo.url, :class => :box, :rel => :box
 :javascript
   function preview(url){
     $('#preview img').attr('src', url);
@@ -31,7 +38,22 @@
     });
 
     $('#slider').easySlider({
-      orientation: 'vertical'
+      vertical : true,
+      prevId: 'prevBtn',
+      nextId: 'nextBtn',
+      controlsShow: false
     });
   });
 
+:javascript
+  $(function(){
+    $('.swap').each(function(){
+      (new Image()).src = $(this).attr('hover_image');
+      $(this).hover(function(){
+        $.data(this, 'waiting_image', this.src);
+        this.src = $(this).attr('hover_image');
+      }, function(){
+        this.src = $.data(this, 'waiting_image');
+      })
+    });
+  });

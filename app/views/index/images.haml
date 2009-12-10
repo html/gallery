@@ -17,7 +17,7 @@
                 - 3.times do
                   - i = @items.shift
                   - if !i.nil?
-                    %div{ :style => 'height:100px' }
+                    %div{ :style => 'height:105px' }
                       =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s)', i.photo.url.to_json), :rel => :box
         .clear
         %span#prevBtn=link_to_function image_tag('/images/verx.png', :hover_image => '/images/verx1.png', :class => 'swap')

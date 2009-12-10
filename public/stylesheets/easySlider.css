@@ -17,12 +17,10 @@
   display:block;
 }
 #nextBtn {
-  float:right;
-  clear:right;
+  float:left;
 }
 #prevBtn {
   float:left;
-  clear:left;
 }
 
 #preview {

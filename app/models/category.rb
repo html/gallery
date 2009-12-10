@@ -6,9 +6,9 @@ class Category < ActiveRecord::Base
   validates_numericality_of :menu_id, :less_than_or_equal => 3, :more_than_or_equal => 1
   has_many :albums
   @@options = {
-    1 => 'PORTFOLIO/WEDDINGS',
-    2 => 'PORTFOLIO/PORTRAITS',
-    3 => 'PORTFOLIO/TRAVEL'
+    1 => 'WEDDINGS',
+    2 => 'PORTRAITS',
+    3 => 'TRAVEL'
   }
 
   def get_title

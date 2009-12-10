@@ -4,6 +4,9 @@ class IndexController < ApplicationController
   before_filter :assign_menu
 
   def index
+    dir = RAILS_ROOT + '/public/images/img'
+    files = Dir.glob("#{dir}/*").map {|val| "/images/img/" + File.basename(val) }
+    @file = files.shuffle.first
   end
 
   def images

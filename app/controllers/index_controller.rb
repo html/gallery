@@ -6,7 +6,8 @@ class IndexController < ApplicationController
   def index
     dir = RAILS_ROOT + '/public/images/img'
     files = Dir.glob("#{dir}/*").map {|val| "/images/img/" + File.basename(val) }
-    @file = files.shuffle.first
+    size = files.size == 0 ? 1 : files.size
+    @file = files[srand() % size].to_s
   end
 
   def images

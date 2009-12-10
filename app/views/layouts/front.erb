@@ -2,8 +2,8 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'blog', 'style' %>
+    <title><%= h(yield(:title) || "Астафоров Евгений") %></title>
+    <%= stylesheet_link_tag 'blog', 'style', 'application' %>
     <%= yield :css %>
     <%= yield(:head) %>
 <script type="text/javascript">
@@ -33,7 +33,7 @@ if (window.attachEvent)
     <td>&nbsp;</td>
     <td width="500" align="right" valign="bottom" class="block_opacity">
   <ul id="cssmenu">
-        <li><a href="index.html">INFO</a>
+        <li><a href="/">INFO</a>
         </li>
         <li><a href="#">CONTACTS</a>
         </li>
@@ -50,25 +50,13 @@ if (window.attachEvent)
 </td>
   </tr>
 </table>
-<table width="75%" border="0" align="center">
-  <tr>
-    <td><div align="center"><img src="img/IMG_2868-1-small.jpg" width="650" height="500" /></div></td>
-  </tr>
-  <tr>
-    <td><div align="right"><img src="img/jiz1n.png" width="427" height="55" /></div></td>
-  </tr>
-</table>
 <p>&nbsp;</p>
 <%= yield %>
 <table width="75%" border="0" align="center">
   <tr>
-    <td><div align="center"><img src="img/IMG_2868-1-small.jpg" width="650" height="500" /></div></td>
-  </tr>
-  <tr>
     <td><div align="right"><img src="/images/jiz1n.png" width="427" height="55" /></div></td>
   </tr>
 </table>
-<p>&nbsp;</p>
 <div id="daun" class="block_opacity1"></div>
 </body>
 </html>

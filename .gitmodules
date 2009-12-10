@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/partial_renderer"]
 	path = vendor/plugins/partial_renderer
 	url = git://github.com/html/partial_renderer.git
+[submodule "vendor/plugins/once"]
+	path = vendor/plugins/once
+	url = git://github.com/html/once.git

@@ -4,19 +4,19 @@
 - items = @items.clone
 %table{ :cellspacing => "0", :border => "0", :align => "center", :width => "55%", :cellpadding => "0" }
   %tr
-    %td
-      - if @items.size.zero?
+    - if @items.size.zero?
+      %td
         =t('No images in this album')
-      - else
-        -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
-        %div{ :style => 'float:left;' }
-          #slider{ :style => 'float:left;margin:10px 0'}
-            %ul
-              = list_of @items do |i|
-                =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s)', i.photo.url.to_json), :rel => :box
-        -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
-        #preview{ :style => 'float:left;text-align:center;width:550px;'}
-          =link_to image_tag(@items.first.photo.url, :style =>  'max-height:300px;max-width:550px;float:left;margin:10px;'), @items.first.photo.url, :class => :box, :rel => :box
+    - else
+      -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
+      %td
+        #slider{ :style => 'float:left;margin:10px 0'}
+          %ul
+            = list_of @items do |i|
+              =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s)', i.photo.url.to_json), :rel => :box
+      -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
+      %td#preview{ :style => 'width:550px;', :align => 'center', :valign => 'top'}
+        =link_to image_tag(@items.first.photo.url, :style =>  'max-height:300px;max-width:550px;margin:10px;'), @items.first.photo.url, :class => :box, :rel => :box
 :javascript
   function preview(url){
     $('#preview img').attr('src', url);

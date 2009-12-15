@@ -6,7 +6,7 @@
     - for item in @items
       %tr.tr
         %td{ :width => 150 }
-          %div{ :align => 'right' }=image_tag item.image.url
+          %div{ :align => 'right' }=link_to image_tag(item.image.url), photos_user_path(item)
         %td
           .map 
             %p#p11

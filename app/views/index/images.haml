@@ -24,7 +24,7 @@
         %span#nextBtn=link_to_function image_tag('/images/dun.png', :hover_image => '/images/dun1.png', :class => 'swap')
       -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
       %td#preview{ :style => 'width:550px;', :align => 'center', :valign => 'top'}
-        =link_to image_tag(@first.photo.url, :style =>  'max-height:300px;max-width:550px;margin:10px;'), @first.photo.url, :class => :box, :rel => :box
+        =link_to image_tag(@first.photo.url(:preview), :style =>  'max-height:300px;max-width:550px;margin:10px;'), @first.photo.url, :class => :box, :rel => :box
 :javascript
   function preview(url){
     $('#preview img').attr('src', url);

@@ -6,7 +6,7 @@
 - if defined? @executed_once
   = link_to image_tag('/images/pagin/5.jpg', :class => "swap", :hover_image => "/images/pagin/6.jpg"), '#top'
 - else
-  - for i in first_page.upto(last_page)
+  - for i in first_page..(last_page)
     - if i == current_page
       = i
     - else

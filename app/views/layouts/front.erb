@@ -32,14 +32,14 @@ if (window.attachEvent)
     <td><img src="/images/ae2.png" /></td>
     <td>&nbsp;</td>
     <td width="500" align="right" valign="bottom" class="block_opacity">
-  <ul id="cssmenu">
-        <li><a href="/">INFO</a>
+  <ul id="navbar">
+        <li class="about"><a href="/"><span>&nbsp;</span></a>
         </li>
-        <li><a href="#">CONTACTS</a>
+        <li class="facility"><a href="#"><span>&nbsp;</span></a>
         </li>
         <% @menu.each do |item| %>
-          <li><a href="javascript:;"><%=h item[:title]%></a>
-              <ul>
+          <li class="<%= item[:title] %>"><a href="javascript:;"><span>&nbsp;</span></a>
+              <ul class="block_opacity2">
                 <% item[:children].each do |item| %>
                   <li><a href="<%=url_for(cat_user_path(item)) %>"><%=h item.title %></a></li>
                 <% end %>

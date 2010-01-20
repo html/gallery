@@ -26,80 +26,19 @@ border:none;
 }
 #daun {
 background: #0f4063;
+margin: 100px 0px -100px -6px;
 width: 101%;
 height: 100px;
 border:none;
-}
-ul#cssmenu {
-        width:440px;
-        margin: 0;
-        border: 0 none;
-        padding: 0;
-        list-style: none;
-        height: 20px;
-        font: 14px/10px Geneva, Arial, Helvetica; 
-        border-left: 0px solid;
+top 100%;
 }
 
-ul#cssmenu li {
-        margin: 0;
-        border: 0 none;
-        padding: 0;
-        float: left;
-        display: inline;
-        list-style: none;
-        position: relative;
-        height: 20px;
-		
-}
 
-ul#cssmenu ul {
-        margin: 0;
-        border: 0 none;
-        padding: 0;
-        width: auto;
-        list-style: none;
-        display: none;
-        position: absolute;
-        top: 15px;
-        left: 0;
-        text-align:left;
-		
-}
 
-ul#cssmenu ul:after {
-        clear: both;
-        display: block;
-        font: 2px/1px serif;
-        content: ".";
-        height: 0;
-        visibility: hidden;
-}
-
-ul#cssmenu ul li {
-        width: 90px;
-        float: left;
-        display: block !important;
-        display: inline;
-}
-
-/* Main Menu */
-ul#cssmenu a {
-	border: 0px;
-	padding: 0 4px;
-	float: none !important;
-	float: left;
-	display: block;
-	color: #FFFFFF;
-	font: 14px/10px Geneva, Arial, Helvetica; 
-	text-decoration: none;
-	height: auto !important;
-	height: 1%;
-}
 
 .block_opacity {
 
-    opacity: 0.5;filter: alpha(opacity=50);
+    opacity: 0.7;filter: alpha(opacity=70);
 
 } 
 .block_opacity1 {
@@ -109,53 +48,185 @@ ul#cssmenu a {
 } 
 .block_opacity2 {
 
-    opacity: 0.8;filter: alpha(opacity=80);
+    opacity: 0.6;filter: alpha(opacity=60);
 
 } 
 
+#navbar {
+	position: absolute;
+	left: 50%;
+	margin: 0 0 0 -90px;
+	padding: 0;
+	width: 650px;
+	height: 30px;
+	top: 122px;
+}
+#navbar li {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	height: 20px;
+}
+#navbar li a {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font: 15px/29px "Arial Narrow";
+	text-decoration: none;
+	white-space: nowrap;
+	color: #FFFFFF;
+	height: 29px;
+	overflow: none;
+}
+#navbar li a:hover {
+	color: #FFFFFF;
+}
+#navbar li a span {
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	float: left;
+	top: 0;
+	left: -1px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	height: 29px;
+}
+#navbar li a:hover span {
+	background-position: 0 -29px;
+}
+#navbar li.active a span {
+	background-position: 0 -29px;
+}
+#navbar li.about, #navbar li.about a , #navbar li.about a span {
+	width: 60px;
+}
+#navbar li.about a span {
+	background-image: url(/images/n1.png);
+}
+#navbar li.facility, #navbar li.facility a , #navbar li.facility a span {
+	width: 120px;
+}
+#navbar li.facility a span {
+	background-image: url(/images/n2.png);
+}
+#navbar li.portfolio, #navbar li.portfolio a , #navbar li.portfolio a span {
+	width: 120px;
+}
+#navbar li.portfolio a span {
+	background-image: url(/images/n3.png);
+}
+#navbar li.vacancy, #navbar li.vacancy a , #navbar li.vacancy a span {
+	width: 120px;
+}
+#navbar li.vacancy a span {
+	background-image: url(/images/n4.png);
+}
+#navbar li.faq, #navbar li.faq a , #navbar li.faq a span {
+	width: 110px;
+}
+#navbar li.faq a span {
+	background-image: url(/images/n5.png);
+}
+
+#navbar li.na, #navbar li.na a , #navbar li.na a span {
+	width: 110px;
+}
+#navbar li.na a span {
+	background-image: url(/images/n7.png);
+}
+
+ul#navbar ul {
+        margin: 0;
+        border: 0 none;
+        padding: 0;
+        width: auto;
+        list-style: none;
+        display: none;
+        position: absolute;
+        top: 22px;
+        left: 0;
+        text-align:left;
+		
+}
+
+ul#navbar ul:after {
+        clear: both;
+        display: block;
+        font: 2px/1px serif;
+        content: ".";
+        height: 0;
+        visibility: hidden;
+}
+
+ul#navbar ul li {
+        width: 80px;
+        float: left;
+        display: block !important;
+        display: inline;
+}
+
+/* Main Menu */
+ul#navbar a {
+	border: 0px;
+	padding: 0 0px;
+	float: none !important;
+	float: left;
+	display: block;
+	color: none;
+	font: 15px/12px  Verdana, Geneva, sans-serif;
+	text-decoration: none;
+	height: auto !important;
+	height: 1%;
+	border: none;
+
+}
+
 /* Main Menu Hover */
-ul#cssmenu a:hover,
-ul#cssmenu li:hover a,
-ul#cssmenu li.iehover a {
+ul#navbar a:hover,
+ul#navbar li:hover a,
+ul#navbar li.iehover a {
 	color:#000000;
 	border-top: 0px solid;
 }
 
 /* Second Menu */
-ul#cssmenu li:hover li a,
-ul#cssmenu li.iehover li a {
+ul#navbar li:hover li a,
+ul#navbar li.iehover li a {
         border-top: 0px solid;
         float: none;
         color: #FFFFFF;
 }
 
 /* Second Menu Hover */
-ul#cssmenu li:hover li a:hover,
-ul#cssmenu li:hover li:hover a,
-ul#cssmenu li.iehover li a:hover,
-ul#cssmenu li.iehover li.iehover a {
+ul#navbar li:hover li a:hover,
+ul#navbar li:hover li:hover a,
+ul#navbar li.iehover li a:hover,
+ul#navbar li.iehover li.iehover a {
 	border-top: 2px solid #FFFFFF;
-	background: #FFFFFF;
 	color:#000000;
 	border:#000000 0px solid;
 }
 
-ul#cssmenu ul ul {
+ul#navbar ul ul {
         display: none;
         position: absolute;
         top: 0;
         left: 10px;
 }
 
-ul#cssmenu li:hover ul ul,
-ul#cssmenu li.iehover ul ul {
+ul#navbar li:hover ul ul,
+ul#navbar li.iehover ul ul {
         display: none;
 }
 
-ul#cssmenu li:hover ul,
-ul#cssmenu ul li:hover ul,
-ul#cssmenu li.iehover ul,
-ul#cssmenu ul li.iehover ul {
+ul#navbar li:hover ul,
+ul#navbar ul li:hover ul,
+ul#navbar li.iehover ul,
+ul#navbar ul li.iehover ul {
         display: block;
 } 
 

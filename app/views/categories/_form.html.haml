@@ -3,7 +3,7 @@
   %p 
     = f.label :menu_id
     %br
-    = f.select :menu_id, Category.options.invert
+    = f.select :menu_id, Category.titles.invert
   %p
     = f.label :title
     %br

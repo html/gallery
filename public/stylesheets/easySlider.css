@@ -9,9 +9,9 @@
       list items must be the same size as the slider area
   */ 
   width:100px;
-  height:300px;
+  height:315px;
   overflow:hidden; 
-  padding-bottom:10px;
+  /*padding-bottom:10px;*/
 }
 #nextBtn, #prevBtn {
   display:block;

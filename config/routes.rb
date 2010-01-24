@@ -55,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/admin', :controller => :categories, :action => :index
   map.connect '/images/:album_id', :controller => :index, :action => :images
   map.connect '/cat/:id', :controller => :index, :action => :cat
+  map.connect '/contacts', :controller => :index, :action => 'contacts'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

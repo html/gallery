@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :photo, :storage => :filesystem, :styles => {
     :original => ["1024x768", :png],
     :preview => ["550x315", :png],
-    :thumb => ["100x100", :png]
+    :thumb => ["100x100#", :png]
   }, :whiny_thumbnails => true, :whiny => true
   validates_attachment_presence :photo
   belongs_to :album

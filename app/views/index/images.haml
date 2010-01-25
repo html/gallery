@@ -18,17 +18,40 @@
                   - i = @items.shift
                   - if !i.nil?
                     %div{ :style => 'height:105px' }
-                      =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s, %s)', i.photo.url(:preview).to_json, i.photo.url.to_json), :rel => :box
+                      =link_to_function image_tag(i.photo.url(:thumb)), sprintf('preview(%s, %s, this)', i.photo.url(:preview).to_json, i.photo.url(:full).to_json), :rel => :box
         .clear
         %span#prevBtn=link_to_function image_tag('/images/verx.png', :hover_image => '/images/verx1.png', :class => 'swap')
         %span#nextBtn=link_to_function image_tag('/images/dun.png', :hover_image => '/images/dun1.png', :class => 'swap')
       -#=render :partial => '/paginate_part', :locals => {:items => items, :cols => 1}
       %td#preview{ :style => 'width:550px;', :align => 'center', :valign => 'top'}
-        =link_to image_tag(@first.photo.url(:preview), :style =>  'max-height:300px;max-width:550px;margin:10px;'), @first.photo.url, :class => :box, :rel => :box
+        =link_to image_tag(@first.photo.url(:preview), :style =>  'max-height:300px;max-width:550px;margin:10px;'), @first.photo.url(:full), :class => :box, :rel => :box
+        .clear
+        %div
+          = link_to_function image_tag('/images/nazad.png', :hover_image => '/images/nazad1.png', :class => 'swap'), 'prevImage()'
+          = link_to_function image_tag('/images/next.png', :hover_image => '/images/next1.png', :class => 'swap'), 'nextImage()'
 :javascript
-  function preview(url, url2){
-    $('#preview img').attr('src', url);
+  var currentEl = $('#slider a:first')[0];
+  var temp = this;
+  $(['next', 'prev']).each(function(key, val){
+    var key = ['first', 'last'][key];
+
+    temp[val + "Image"] = function(){
+      var div = $(currentEl).parent();
+      var a = div[val]().find('a:' + key);
+
+      if(a.length){
+        a.click();
+      }else{
+        $('#' + val + 'Btn a:first').click();
+        div.parent()[val]().find('a:' + key).click();
+      }
+    }
+  });
+
+  function preview(url, url2, t){
+    $('#preview img:first').attr('src', url);
     $('#preview a').attr('href', url2);
+    currentEl = t;
   }
   $(function(){
     $('.box').fancybox({
